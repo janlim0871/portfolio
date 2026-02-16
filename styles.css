@@ -1257,4 +1257,121 @@ h6 {
         margin-left: 0;
         margin-bottom: 0.5rem;
     }
+
+    /* Mobile Improvements for Charts & Titles */
+    .section-title {
+        font-size: 2rem;
+        /* Reduced from 2.5rem */
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        /* Ensure it's not too huge */
+    }
+
+    .chart-container,
+    .area-chart-container {
+        padding: 0;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll if we can fit it */
+    }
+
+    .growth-svg,
+    .area-svg {
+        min-width: 0;
+        /* Allow shrinking below the desktop 600px limit */
+        width: 100%;
+        min-height: auto;
+        /* Allow height to shrink proportionally */
+        height: auto;
+    }
+
+    .chart-card.full-width {
+        padding: 1.5rem;
+        /* Reduce padding on mobile */
+    }
+
+    .chart-labels {
+        padding: 0;
+        font-size: 0.75rem;
+    }
+
+    .chart-legend-row {
+        gap: 1rem;
+        flex-direction: column;
+        /* Stack legend items if needed, or keep row but closer */
+        align-items: center;
+    }
+
+    /* Floating Card & Profile Responsive */
+    .profile-frame {
+        width: 280px;
+        /* Reduce size for mobile */
+        height: 280px;
+        margin: 0 auto;
+    }
+
+    .floating-card {
+        right: auto;
+        left: 50%;
+        bottom: -40px;
+        transform: translateX(-50%);
+        /* Centered */
+        width: 90%;
+        /* prevent overflow */
+        max-width: 320px;
+        padding: 1rem;
+        gap: 1rem;
+        justify-content: space-around;
+        animation: none;
+        /* Disable float animation on mobile if it causes issues, or adjust keyframes */
+    }
+
+    /* Re-apply floating animation but with X-centering included? 
+       Actually, `transform` is used for centering. The animation uses `transform` too.
+       Overwriting `transform` breaks one or the other.
+       Better to wrap content or modify animation for mobile if we want floating.
+       For now, let's disable floating vertical animation to keep it simple and stable on mobile, 
+       or use margin instead of transform for centering? No, absolute centering needs transform or left/right.
+       
+       Let's just keep it static-ish (no float animation) on mobile to ensure it stays centered.
+    */
+
+    .stat-number {
+        font-size: 1.4rem;
+        white-space: normal;
+        /* Allow wrapping */
+        text-align: center;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        white-space: normal;
+        /* Allow wrapping */
+        text-align: center;
+    }
+
+    .stat-item {
+        flex-direction: column;
+        /* Stack number and label on mobile if needed, or just let them wrap? 
+                                   Actually, usually number is on top of label or side-by-side. 
+                                   Original is row. Let's keep row but allow wrapping? 
+                                   User said "two liner", implies text wrapping. 
+                                   But if I stack them, it becomes:
+                                   5+
+                                   Years Experience
+                                   
+                                   If I keep row and wrap:
+                                   5+ Years
+                                   Experience
+                                   
+                                   Let's try flex-direction: column for the item itself, so it's:
+                                   [5+]
+                                   [Years Experience]
+                                   This is definitely "two liner" and cleaner for mobile bubbles.
+                                */
+        flex-direction: column;
+        text-align: center;
+        gap: 0.2rem;
+    }
 }
